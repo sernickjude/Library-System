@@ -1,0 +1,16 @@
+{% extends 'Library_System/base.html' %}
+
+{% block content %}
+<h1>Your Albums</h1>
+<a href="{% url 'photo_album:album_create' %}">Create New Album</a>
+<ul>
+  {% for album in albums %}
+    <li>
+      <a href="{% url 'photo_album:album_detail' album.pk %}">{{ album.title }}</a>
+      - {{ album.description }}
+    </li>
+  {% empty %}
+    <li>No albums yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

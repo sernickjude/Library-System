@@ -1,0 +1,23 @@
+{% extends 'Library_System/base.html' %}
+
+{% block content %}
+<h1>{{ album.title }}</h1>
+<p>{{ album.description }}</p>
+<p>Created on {{ album.created_at }}</p>
+<a href="{% url 'photo_album:photo_add' album_pk=album.pk %}">Add Photo</a>
+<a href="{% url 'photo_album:album_edit' album.pk %}">Edit Album</a>
+<a href="{% url 'photo_album:album_delete' album.pk %}">Delete Album</a>
+<h2>Photos</h2>
+<ul>
+  {% for photo in album.photos.all %}
+    <li>
+      <strong>{{ photo.title }}</strong>
+      <p>{{ photo.description }}</p>
+      <img src="{{ photo.image }}" alt="{{ photo.title }}" style="max-width: 300px;" />
+      <a href="{% url 'photo_album:photo_delete' photo.pk %}">Delete Photo</a>
+    </li>
+  {% empty %}
+    <li>No photos yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

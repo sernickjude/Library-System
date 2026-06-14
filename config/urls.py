@@ -22,6 +22,7 @@ from accounts import views as accounts_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Library_System.urls')),
+    path('albums/', include('photo_album.urls')),
 
     path('accounts/', include('accounts.urls')),
 

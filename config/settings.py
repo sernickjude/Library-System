@@ -85,6 +85,24 @@ DATABASES = {
     }
 }
 
+# Allow production configuration via environment variables (Render/Postgres)
+import dj_database_url
+
+# If a DATABASE_URL is provided (e.g. on Render), parse it.
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+
+# ALLOWED_HOSTS can be set via env (comma-separated)
+if os.environ.get('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+
+# Cloudinary configuration: enable when CLOUDINARY_URL is present
+if os.environ.get('CLOUDINARY_URL'):
+    # optional apps
+    INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

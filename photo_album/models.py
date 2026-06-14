@@ -1,13 +1,15 @@
+import os
+
 from django.db import models
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-# Try to use CloudinaryField when available; fallback to URLField so local
-# testing still works without Cloudinary installed.
+# Use Cloudinary only when the package is installed and CLOUDINARY_URL is configured.
+# Otherwise use local ImageField storage for development.
 try:
     from cloudinary.models import CloudinaryField
-    _USE_CLOUDINARY = True
+    _USE_CLOUDINARY = bool(os.environ.get('CLOUDINARY_URL'))
 except Exception:
     CloudinaryField = None
     _USE_CLOUDINARY = False
@@ -29,11 +31,11 @@ class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='photos')
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    # Use CloudinaryField when available; otherwise store an image URL.
+    # Use CloudinaryField when available; otherwise store uploaded files locally.
     if _USE_CLOUDINARY:
         image = CloudinaryField('image')
     else:
-        image = models.URLField(max_length=1024)
+        image = models.ImageField(upload_to='photos/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

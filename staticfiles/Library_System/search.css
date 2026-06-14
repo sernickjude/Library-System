@@ -1,0 +1,29 @@
+.search {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.search input {
+    flex: 1;           /* takes available space */
+    min-width: 150px;  /* don’t shrink too small */
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid black; 
+    outline: none;
+}
+
+.search button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #52796f;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search button:hover {
+    background-color: #354f52;
+}

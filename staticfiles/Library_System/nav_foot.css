@@ -1,0 +1,164 @@
+/* RESET (very important) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    width: 100%;
+    background-color: #2f3e46;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* INNER NAV CONTAINER */
+.nav-container {
+    max-width: 1100px;
+    margin: 1 auto;
+    padding: 10px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* THIS IS THE KEY */
+}
+
+/* LOGO */
+.logo {
+    flex: 1;
+}
+
+.logo a {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* NAV LINKS (CENTER) */
+.nav-links {
+    flex: 2;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Hover underline */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #84a98c;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* ================= FOOTER ================= */
+.footer {
+    background-color: #2f3e46;
+    color: white;
+    padding: 30px 20px 15px;
+    margin-top: 40px;
+}
+
+/* FOOTER CONTAINER */
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* FOOTER LOGO */
+.footer-logo h2 {
+    margin-bottom: 5px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    color: #cad2c5;
+}
+
+/* FOOTER NAV */
+.footnav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footnav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footnav a:hover {
+    color: #84a98c;
+}
+
+/* COPYRIGHT */
+.footer-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #cad2c5;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footnav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

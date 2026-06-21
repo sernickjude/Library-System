@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -41,7 +40,6 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'Library_System', 'Templates'),
             os.path.join(BASE_DIR, 'accounts', 'Templates'),
-            os.path.join(BASE_DIR, 'photo_album', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

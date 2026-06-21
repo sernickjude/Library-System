@@ -98,6 +98,11 @@ if DATABASE_URL:
 if os.environ.get('ALLOWED_HOSTS'):
     ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
+# Render fallback: automatically trust Render's external hostname
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 # Cloudinary configuration: enable when CLOUDINARY_URL is present
 if os.environ.get('CLOUDINARY_URL'):
     # optional apps

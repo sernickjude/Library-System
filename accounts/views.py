@@ -23,6 +23,8 @@ def registration(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
 
+        print(f"DEBUG: username={username}, password={password}, confirm={confirm_password}")
+
         if password != confirm_password:
             messages.error(request, 'Passwords do not match.')
         elif User.objects.filter(username=username).exists():
@@ -30,6 +32,7 @@ def registration(request):
         else:
             user = User.objects.create_user(username=username, password=password)
             auth_login(request, user)
+            print("DEBUG: User created and logged in successfully")
             return redirect('photo_album:album_list')
 
     return render(request, 'accounts/registration.html')

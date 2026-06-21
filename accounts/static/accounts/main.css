@@ -83,3 +83,29 @@ body {
 .auth-box a:hover {
     text-decoration: underline;
 }
+
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    width: 360px;
+}
+
+.messages li {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.messages li.error {
+    background: rgba(255, 70, 70, 0.15);
+    border: 1px solid #ff4646;
+    color: #ff6b6b;
+}
+
+.messages li.success {
+    background: rgba(70, 255, 120, 0.15);
+    border: 1px solid #46ff78;
+    color: #6bff9b;
+}

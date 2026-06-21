@@ -12,6 +12,13 @@
 </head>
 <body>
     <div class="container">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     {% block content %}
         <h1>No Content</h1>
     {%endblock%}

@@ -1,0 +1,78 @@
+{% extends 'Library_System/base.html' %}
+
+
+{% block title %}
+FAQ
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 60px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+    }
+    .faq-item {
+        margin-bottom: 20px;
+    }
+    .question {
+        cursor: pointer;
+        background-color: #007BFF;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .answer {
+        display: none;
+        padding: 15px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>FAQ</h1>
+
+    <div class="faq-item">
+        <div class="question">How do I borrow a book?</div>
+        <div class="answer">Go to the Catalog page, select a book, and click the "Borrow" button.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Can I reserve books online?</div>
+        <div class="answer">Yes, unavailable books can be reserved through your account, and you'll be notified when they’re ready.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">How long can I keep a book?</div>
+        <div class="answer">Books are usually borrowed for 2 weeks. Check your account for exact due dates.</div>
+    </div>
+</div>
+
+<script>
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(q => {
+        q.addEventListener('click', () => {
+            const answer = q.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+
+{% endblock %}

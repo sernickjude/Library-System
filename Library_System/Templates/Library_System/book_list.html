@@ -1,0 +1,21 @@
+{% extends "Library_System/base.html" %}
+{% load static%}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Library_System/search.css' %}">
+{% endblock %}
+{%block content %}
+    <form method="get" class="search">
+    <input type="text" name="query" placeholder="Search books..." value="{{ query|default:'' }}">
+    <button type="submit">Search</button>
+    </form>
+        <h1>My Books</h1>
+            <ul>
+            {% for book in books %}
+        <div >
+            <h3>{{ book.title }}</h3>
+            <p>Author: {{ book.author }}</p>
+        </div>
+            {% endfor %}
+            </ul>
+{%endblock%}

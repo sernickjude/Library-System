@@ -1,0 +1,21 @@
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <!-- Logo / Brand -->
+        <div class="logo">
+            <a href="{% url 'index' %}">📚 Library</a>
+        </div>
+
+        <!-- Links -->
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#">Catalog</a></li>
+            <li><a href="{% url 'book_list' %}">My Books</a></li>
+            <li><a href="#">Reservations</a></li>
+            <li><a href="{% url 'photo_album:album_list' %}">Albums</a></li>
+        </ul>
+
+    </div>
+
+</nav>
